@@ -206,20 +206,7 @@ def create_app(test_config=None):
   Try using the word "title" to start. 
   '''
 
-  @app.route('/quizzes', methods=['POST'])
-  def get_quiz_question():
-    body = request.get_json()
-    previous_questions = body.get('previous_questions', None)
-    quiz_category = body.get('quiz_category', None)
-    if quiz_category['id'] == 0:
-      selection = db.session.query(Question).filter(Question.id.not_in(previous_questions)).all()
-    else:
-      selection = db.session.query(Question).filter(Question.category == quiz_category['id']).filter(Question.id.not_in(previous_questions)).all()
-    current_question = random.choice(selection)
-    return jsonify({
-      'success': True,
-      'question': current_question.format()
-    })
+
     
 
   '''
@@ -257,7 +244,20 @@ def create_app(test_config=None):
   one question at a time is displayed, the user is allowed to answer
   and shown whether they were correct or not. 
   '''
-
+  @app.route('/quizzes', methods=['POST'])
+  def get_quiz_question():
+    body = request.get_json()
+    previous_questions = body.get('previous_questions', None)
+    quiz_category = body.get('quiz_category', None)
+    if quiz_category['id'] == 0:
+      selection = db.session.query(Question).filter(Question.id.not_in(previous_questions)).all()
+    else:
+      selection = db.session.query(Question).filter(Question.category == quiz_category['id']).filter(Question.id.not_in(previous_questions)).all()
+    current_question = random.choice(selection)
+    return jsonify({
+      'success': True,
+      'question': current_question.format()
+    })
   '''
   @TODO: 
   Create error handlers for all expected errors 

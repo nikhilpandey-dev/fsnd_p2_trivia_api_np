@@ -2,13 +2,14 @@ import os
 from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
+from settings import DB_NAME, DB_USER, DB_PASSWORD
 
 database_name = "trivia"
 # setup database path and use student as the user and owner of the database
 # Have reset categories id to 0 using the code UPDATE public.categories SET id = id - 1;
 
 database_path = "postgresql://{}:{}@{}/{}".format(
-    "student", "student", "localhost:5432", database_name
+    DB_USER, DB_PASSWORD, "localhost:5432", DB_NAME
 )
 
 
@@ -83,21 +84,3 @@ class Category(db.Model):
       'id': self.id,
       'type': self.type
     }
-
-# class Category_Question_List(db.Model):
-#   __tablename__ = 'category_question_list'
-
-#   id = Column(Integer, primary_key=True)
-#   category_id = Column(Integer)
-#   question_id = Column(Integer)
-
-#   def __init__(self, category_id, question_id):
-#     self.category_id = category_id
-#     self.question_id = question_id
-
-#   def format(self):
-#     return {
-#       'id': self.id,
-#       'category_id': self.category_id,
-#       'question_id': self.question_id
-#     }
