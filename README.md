@@ -500,4 +500,4 @@ The application can be either hosted on the remote server and/or cloud or can be
  2. `backend/test_flaskr.py`
 Apart from that he has written the documentation which is given in the `README.md` file, which you are reading now.
 ## Acknowledgements
-This project is a part of the Udacity Full Stack Web Developer Nanodegree program. So obviously it has been taken a lots of resources from Udacity, espcailly the lecture notes and exercise codes. Apart from the this the Q&A forum for this [trivia project](https://knowledge.udacity.com/?nanodegree=nd0044&page=1&project=630&rubric=2634&sort=SCORE) is also a source of information for this project.
+This project is a part of the Udacity Full Stack Web Developer Nanodegree program. So obviously it has used a lots of resources from Udacity, espcailly the lecture notes and exercise codes. Apart from the these two, the Q&A forum for this [trivia project](https://knowledge.udacity.com/?nanodegree=nd0044&page=1&project=630&rubric=2634&sort=SCORE) is also a source of information as well as codes for this project.
