@@ -57,7 +57,6 @@ class TriviaTestCase(unittest.TestCase):
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertTrue(data["total_categories"])
         self.assertTrue(data["categories"])
     
     # Test for retrieving categories failure scenario
@@ -124,10 +123,14 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 400)
         self.assertEqual(data["success"], False)
         self.assertEqual(data["message"], "bad request")
-
-
-
     
+    # Test for playing quiz
+    def test_play_quiz(self):
+        res = self.client().post("/quizzes", json={"previous_questions": [], "quiz_category": {"type": "Science", "id": "1"}})
+        data = json.loads(res.data)
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data["success"], True)
+        self.assertTrue(data["question"])
 
 
 # Make the tests conveniently executable
